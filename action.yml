@@ -1,0 +1,6 @@
+# action.yml
+name: "Update README"
+description: "Update README.md using bank list from bank2ynab.conf"
+runs:
+  using: "docker"
+  image: "Dockerfile"
