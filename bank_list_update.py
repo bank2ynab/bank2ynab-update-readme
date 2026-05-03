@@ -66,7 +66,7 @@ def run(read_file, write_file, start, end):
 
 
 # Variables
-config_file = "bank2ynab.conf"
+config_file = "data/bank2ynab.conf"
 readme_file = "README.md"
 start_token = "<!--AUTO BANK UPDATE START-->"
 end_token = "<!--AUTO BANK UPDATE END-->"
