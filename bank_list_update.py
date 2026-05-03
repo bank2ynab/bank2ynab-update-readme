@@ -1,4 +1,3 @@
-
 """
 Helper script to update README.md to reflect banks listed in bank2ynab.conf
 """
@@ -7,6 +6,10 @@ import logging
 import re
 from typing import Any
 
+CONFIG_FILE = "bank2ynab/data/bank2ynab.conf"
+README_FILE = "README.md"
+START_TOKEN = "<!--AUTO BANK UPDATE START-->"
+END_TOKEN = "<!--AUTO BANK UPDATE END-->"
 # configure our logger
 logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
@@ -52,7 +55,7 @@ def edit_readme(file, start, end, banks) -> None:
         f.write(file_contents)
 
 
-def run(read_file, write_file, start, end):
+def run(read_file, write_file, start, end) -> None:
     """
     :param read_file: filename for config file
     :param write_file: filename for readme file
@@ -65,9 +68,5 @@ def run(read_file, write_file, start, end):
     logging.info("Done.")
 
 
-# Variables
-config_file = "data/bank2ynab.conf"
-readme_file = "README.md"
-start_token = "<!--AUTO BANK UPDATE START-->"
-end_token = "<!--AUTO BANK UPDATE END-->"
-run(config_file, readme_file, start_token, end_token)
+if __name__ == "__main__":
+    run(CONFIG_FILE, README_FILE, START_TOKEN, END_TOKEN)
