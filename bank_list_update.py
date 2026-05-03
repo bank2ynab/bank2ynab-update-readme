@@ -5,12 +5,13 @@ Helper script to update README.md to reflect banks listed in bank2ynab.conf
 
 import logging
 import re
+from typing import Any
 
 # configure our logger
 logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
 
-def get_banks(file):
+def get_banks(file) -> list[Any]:
     """
     :param file: filename for config file
     :return banks: list of bank names
@@ -20,13 +21,13 @@ def get_banks(file):
     with open(file, "r") as f:
         file_contents = f.read()
 
-    bracket_regex = re.compile("\n\[(.*)\]\n")
+    bracket_regex = re.compile("\n\\[(.*)\\]\n")
     banks = bracket_regex.findall(file_contents)
 
     return banks[1:]
 
 
-def edit_readme(file, start, end, banks):
+def edit_readme(file, start, end, banks) -> None:
     """
     :param file: filename for readme file
     :param start: string indicating start of section to replace
